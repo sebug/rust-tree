@@ -1,10 +1,21 @@
+extern crate rand;
+use rand::distributions::{Distribution, Uniform};
+
 fn branch(n: i32, i: i32) -> String {
     let mut result = String::from("");
     for _ in 0..(n - i) {
         result.push_str(" ");
     }
+    let mut rng = rand::thread_rng();
+    let between = Uniform::from(0..10);
     for _ in 0..(2 * i + 1) {
-        result.push_str("x");
+        let r: i32 = between.sample(&mut rng);
+        let tile = if r < 3 {
+            "O"
+        } else {
+            "x"
+        };
+        result.push_str(tile);
     }
     result
 }
