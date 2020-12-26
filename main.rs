@@ -1,10 +1,13 @@
-fn get_tree(n: i32) -> String {
-    let mut output = String::from(" + \n");
-    output.push_str("|||");
+fn get_tree(n: i32) -> Vec<String> {
+    let mut output = Vec::new();
+    output.push(String::from(" + "));
+    output.push(String::from("|||"));
     output
 }
 
 fn main() {
     let output = get_tree(8);
-    println!("{}", output)
+    for l in output {
+        println!("{}", l)
+    }
 }
